@@ -2,10 +2,12 @@ package ampliacion.ud4;
 
 public class CuentaCorriente {
 	//Atributos
-	private String nombreBanco;
+	
 	private String dni;
 	public String nombre;
-	double saldo;
+	private double saldo;
+	private static String nombreBanco= "Unicoja";
+	
 	
 	//Constructor con 3 atributos:
 	public CuentaCorriente (String dni, String nombre, double saldo) {
@@ -27,25 +29,33 @@ public class CuentaCorriente {
 		saldo= 0.00;
 	}
 	
+	//MÉTODOS PARA OPERACIONES TÍPICAS:
 	//Método sacar dinero:
 	public void sacarDinero (double extracto) {
-		if (this.saldo>extracto)
+		if (this.saldo>=extracto) {
 			System.out.println("Es posible retirar la cantidad deseada");
-		else
+			this.saldo = this.saldo - extracto;
+		}else
 			System.out.println("No es posible retirar la cantidad deseada");
 	}
 	
 	//Método ingresar dinero:
-	public double ingresarDinero (double ingreso) {
+	public void ingresarDinero (double ingreso) {
 		this.saldo = this.saldo + ingreso;
-		return this.saldo;
 	}
 	
 	//Método para mostrar información:
 	public void mostrarInfo () {
-		System.out.println(this.nombre);
-		System.out.println(this.dni);
-		System.out.println(this.saldo);
+		System.out.println("Nombre: " + this.nombre);
+		System.out.println("DNI: " + this.dni);
+		System.out.println("Saldo: " + this.saldo);
 	}
 	
+	//Metodos getter y setter para el atributo nombre del banco:
+	public String getNombreBanco() {
+		return nombreBanco;
+	}
+	public void setNombreBanco(String nombreBanco) {
+		this.nombreBanco = nombreBanco;
+	}
 }
